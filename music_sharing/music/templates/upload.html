@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Upload Music File</h1>
+{% if user %}
+  <label for="user_email">Logged in as</label>
+  <span id="user_email">{{ user.email }}</span><br>
+{% endif %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+      <label for="file">Music File:</label>
+      <input type="file" id="file" name="file" required>
+    </div>
+    <div>
+      <label for="visibility">Visibility:</label>
+      <select id="visibility" name="visibility" required>
+        <option value="public">Public</option>
+        <option value="private">Private</option>
+        <option value="protected">Protected</option>
+      </select>
+    </div>
+    <div id="allowed-emails-wrapper" style="display: none;">
+      <label for="allowed_emails">Allowed Emails (comma-separated):</label>
+      <input type="text" id="allowed_emails" name="allowed_emails">
+    </div>
+    <button type="submit">Upload</button>
+  </form>
+
+  <script>
+    // Function to toggle the visibility of the "Allowed Emails" field
+    function toggleAllowedEmails() {
+      const visibilitySelect = document.getElementById("visibility");
+      const allowedEmailsWrapper = document.getElementById("allowed-emails-wrapper");
+
+      if (visibilitySelect.value === "protected") {
+        allowedEmailsWrapper.style.display = "block";
+      } else {
+        allowedEmailsWrapper.style.display = "none";
+      }
+    }
+
+    // Add event listener to the visibility select field
+    const visibilitySelect = document.getElementById("visibility");
+    visibilitySelect.addEventListener("change", toggleAllowedEmails);
+
+    // Call the function initially to set the initial visibility state
+    toggleAllowedEmails();
+  </script>
+{% endblock %}

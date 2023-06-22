@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Welcome to the Music Sharing Portal</h1>
+  <h2>My Music Files</h2>
+{% if user %}
+  <label for="user_email">Logged in as</label>
+  <span id="user_email">{{ user.email }}</span><br>
+{% endif %}
+  <ul>
+    {% for file in files %}
+      <li>{{ file.file.name }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music Sharing Portal</title>
+</head>
+<body>
+  <header>
+    <h1>Music Sharing Portal</h1>
+    <nav>
+      <ul>
+        <li><a href="{% url 'homepage' %}">Home</a></li>  <!-- Link to the homepage -->
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'upload' %}">Upload</a></li>  <!-- Link to the upload page if user is authenticated -->
+          <li><a href="{% url 'logout' %}">Logout</a></li>  <!-- Link to log out the user -->
+        {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>  <!-- Link to the login page if user is not authenticated -->
+          <li><a href="{% url 'register' %}">Register</a></li>  <!-- Link to the registration page if user is not authenticated -->
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>

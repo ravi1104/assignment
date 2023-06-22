@@ -1,0 +1,35 @@
+# Django project files
+
+# Ignore database files
+db.sqlite3
+
+# Ignore migration files
+/music_sharing/migration
+/music_sharing/music/migration
+# Ignore static files
+/static/
+/media/
+/music_sharing/allmusic
+# Ignore environment-specific settings
+/music_sharing/settings/local.py
+
+# Ignore sensitive information (e.g., secret keys)
+/music_sharing/settings/secret_key.py
+
+# Ignore virtual environment
+/venv/
+/env/
+
+# Ignore editor-specific files
+*.pyc
+*~
+.vscode/
+.idea/
+
+# Ignore logs and temporary files
+/logs/
+/tmp/
+
+# Ignore package dependencies
+/music_sharing/requirements.txt
+/music_sharing/requirements/
